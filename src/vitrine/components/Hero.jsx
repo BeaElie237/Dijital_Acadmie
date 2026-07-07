@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import heroImage from '../../assets/vitrine/hero-student-placeholder.svg'
+import heroImage from '../../assets/vitrine/img_section1.png'
 import Reveal from './ui/Reveal'
 import { DotGrid, WaveSquiggle, DashedCircle, RingCircle, SolidDot } from './ui/FloatingShapes'
 
@@ -55,7 +55,7 @@ export default function Hero() {
 
             <motion.img
               src={heroImage}
-              alt="Illustration d'un étudiant accompagné par Dijital"
+              alt="Étudiante accompagnée par Dijital, travaillant sur son ordinateur portable"
               className="relative z-10 w-64 sm:w-80 lg:w-96 h-auto drop-shadow-xl"
               loading="eager"
               initial={{ y: 20, opacity: 0 }}

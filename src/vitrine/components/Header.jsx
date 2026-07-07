@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import logo from '../../assets/vitrine/logo-placeholder.svg'
+import logo from '../../assets/vitrine/logo-dijital.png'
 import { NAV_LINKS } from '../data/nav'
 import { CONFIG } from '../data/config'
 
@@ -30,7 +30,7 @@ export default function Header() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         <a href="#accueil" onClick={(e) => handleNavClick(e, '#accueil')} className="flex items-center">
-          <img src={logo} alt="Dijital" className="h-9 w-auto" />
+          <img src={logo} alt="Dijital" className="h-11 sm:h-12 w-auto" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8">

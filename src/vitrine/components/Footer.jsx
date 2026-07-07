@@ -1,4 +1,4 @@
-import logo from '../../assets/vitrine/logo-placeholder.svg'
+import logo from '../../assets/vitrine/logo-dijital.png'
 import { CONFIG } from '../data/config'
 import { NAV_LINKS } from '../data/nav'
 import { SERVICES } from '../data/services'
@@ -17,7 +17,7 @@ export default function Footer() {
     <footer className="bg-ink text-slate-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
-          <img src={logo} alt="Dijital" className="h-9 w-auto brightness-0 invert" />
+          <img src={logo} alt="Dijital" className="h-12 w-auto" />
           <p className="text-sm text-slate-400 mt-4 max-w-xs">
             Formation, développement logiciel et solutions IA — Dijital accompagne votre transformation
             numérique.
