@@ -7,7 +7,7 @@ export const TEAM = [
   {
     id: 'ceo',
     name: 'Elie Bea',
-    role: 'Fondatrice & CEO',
+    role: 'Data Engineer & CEO',
     photo: member1,
     socials: { linkedin: '#', twitter: '#' }
   },
