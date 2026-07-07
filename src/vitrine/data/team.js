@@ -1,7 +1,6 @@
 import member1 from '../../assets/vitrine/team/member-placeholder-1.svg'
-import member2 from '../../assets/vitrine/team/member-placeholder-2.svg'
-import member3 from '../../assets/vitrine/team/member-placeholder-3.svg'
-import member4 from '../../assets/vitrine/team/member-placeholder-4.svg'
+import memberJoyce from '../../assets/vitrine/team/member-mboupda-joyce.svg'
+import memberAkamba from '../../assets/vitrine/team/member-akamba.svg'
 
 export const TEAM = [
   {
@@ -12,24 +11,17 @@ export const TEAM = [
     socials: { linkedin: '#', twitter: '#' }
   },
   {
-    id: 'cto',
-    name: 'Jean Dupont',
-    role: 'CTO',
-    photo: member2,
+    id: 'mboupda-joyce',
+    name: 'Mboupda Joyce',
+    role: 'Journaliste, Community Manager & Business Analyste',
+    photo: memberJoyce,
     socials: { linkedin: '#', twitter: '#' }
   },
   {
-    id: 'lead-ia',
-    name: 'Aïcha Koné',
-    role: 'Lead IA & Data',
-    photo: member3,
-    socials: { linkedin: '#', twitter: '#' }
-  },
-  {
-    id: 'lead-formation',
-    name: 'Moussa Traoré',
-    role: 'Responsable Formations',
-    photo: member4,
+    id: 'akamba',
+    name: 'Akamba',
+    role: 'Ingénieur Systèmes, Réseaux & Génie Logiciel',
+    photo: memberAkamba,
     socials: { linkedin: '#', twitter: '#' }
   }
 ]

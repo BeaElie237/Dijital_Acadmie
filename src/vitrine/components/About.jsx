@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
-import aboutImage from '../../assets/vitrine/about-placeholder.svg'
+import aboutImage from '../../assets/vitrine/about-placeholder.png'
 import videoThumb from '../../assets/vitrine/about-video-placeholder.svg'
 import Reveal from './ui/Reveal'
 import { DotGrid, RingCircle } from './ui/FloatingShapes'
@@ -19,11 +19,12 @@ export default function About() {
           <div className="relative w-full max-w-sm">
             <DotGrid className="absolute -left-8 -bottom-8 text-teal-300/60" rows={6} cols={6} />
             <RingCircle size={44} className="absolute -top-6 right-6 text-sunshine-400 animate-float z-10" />
+            <div className="absolute inset-x-6 top-6 bottom-0 rounded-[2.5rem] bg-pastel-cream" aria-hidden="true" />
 
             <img
               src={aboutImage}
-              alt="Illustration de l'équipe Dijital au travail"
-              className="w-full rounded-3xl shadow-xl relative z-[1]"
+              alt="Membre de l'équipe Dijital au travail sur ordinateur"
+              className="w-full h-auto relative z-[1] drop-shadow-xl"
               loading="lazy"
             />
 

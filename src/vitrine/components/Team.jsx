@@ -13,7 +13,7 @@ export default function Team() {
           description="Une équipe pluridisciplinaire passionnée par la formation et la technologie."
         />
 
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {TEAM.map((member, i) => (
             <TeamCard key={member.id} member={member} index={i} />
           ))}

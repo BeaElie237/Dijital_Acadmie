@@ -2,6 +2,7 @@ import { Mail } from 'lucide-react'
 import Reveal from './ui/Reveal'
 import { CONFIG } from '../data/config'
 import { DashedCircle, SolidDot } from './ui/FloatingShapes'
+import LocationMap from './LocationMap'
 
 export default function ContactCTA() {
   return (
@@ -24,6 +25,10 @@ export default function ContactCTA() {
           Nous contacter
         </a>
       </Reveal>
+
+      <div className="relative px-4">
+        <LocationMap />
+      </div>
     </section>
   )
 }
