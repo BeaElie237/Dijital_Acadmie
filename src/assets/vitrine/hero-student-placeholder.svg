@@ -1,0 +1,33 @@
+<svg width="480" height="600" viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Illustration placeholder : à remplacer par la vraie photo détourée de l'étudiant -->
+  <ellipse cx="240" cy="560" rx="150" ry="24" fill="#0f4c43" opacity="0.08" />
+
+  <!-- silhouette corps -->
+  <path d="M150 560 V360 a90 90 0 0 1 180 0 V560 z" fill="#1bab8a" opacity="0.9" />
+  <!-- sac à dos -->
+  <rect x="118" y="330" width="60" height="110" rx="18" fill="#e94e48" />
+  <!-- tête -->
+  <circle cx="240" cy="230" r="86" fill="#f4c9a0" />
+  <!-- cheveux -->
+  <path d="M154 220 a86 86 0 0 1 172 0 v10 c-20-30-60-46-86-46s-66 16-86 46 z" fill="#5b3a29" />
+  <!-- sourire -->
+  <path d="M212 258 q28 22 56 0" stroke="#7a3b2e" stroke-width="4" fill="none" stroke-linecap="round" />
+  <circle cx="212" cy="228" r="5" fill="#3a2418" />
+  <circle cx="268" cy="228" r="5" fill="#3a2418" />
+
+  <!-- livres tenus -->
+  <g transform="translate(300 380) rotate(8)">
+    <rect x="0" y="0" width="70" height="90" rx="6" fill="#ffb821" />
+    <rect x="10" y="-14" width="70" height="90" rx="6" fill="#7048f5" />
+  </g>
+
+  <!-- badge collaborateurs -->
+  <g transform="translate(150 470)">
+    <rect x="0" y="0" width="150" height="46" rx="23" fill="#ffffff" />
+    <circle cx="26" cy="23" r="16" fill="#f79c99" />
+    <circle cx="50" cy="23" r="16" fill="#a3e6d3" />
+    <circle cx="74" cy="23" r="16" fill="#ffe08a" />
+    <circle cx="118" cy="23" r="16" fill="#e94e48" />
+    <path d="M112 23h12M118 17v12" stroke="#fff" stroke-width="2.4" stroke-linecap="round" />
+  </g>
+</svg>

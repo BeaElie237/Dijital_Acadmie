@@ -1,0 +1,6 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" rx="24" fill="#fff6e2" />
+  <circle cx="100" cy="82" r="38" fill="#f89b08" opacity="0.9" />
+  <path d="M40 178 a60 58 0 0 1 120 0 z" fill="#f89b08" opacity="0.9" />
+  <text x="100" y="90" font-family="Poppins, sans-serif" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle">AK</text>
+</svg>

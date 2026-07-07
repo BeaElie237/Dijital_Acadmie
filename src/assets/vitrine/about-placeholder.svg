@@ -1,0 +1,8 @@
+<svg width="420" height="480" viewBox="0 0 420 480" xmlns="http://www.w3.org/2000/svg">
+  <!-- Illustration placeholder : à remplacer par une vraie photo de l'équipe/atelier -->
+  <rect width="420" height="480" rx="28" fill="#fff6e2" />
+  <circle cx="210" cy="180" r="70" fill="#f89b08" opacity="0.9" />
+  <path d="M120 460 V330 a90 90 0 0 1 180 0 V460 z" fill="#f89b08" opacity="0.9" />
+  <rect x="150" y="360" width="40" height="50" rx="8" fill="#ffffff" opacity="0.85" />
+  <path d="M162 372 h16 M162 384 h16" stroke="#f89b08" stroke-width="3" stroke-linecap="round" />
+</svg>
