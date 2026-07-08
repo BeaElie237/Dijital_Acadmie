@@ -1,8 +1,8 @@
-const { getAdminClient, requireAdmin, jsonResponse } = require('./_supabaseAdmin')
+import { getAdminClient, requireAdmin, jsonResponse } from './_supabaseAdmin.js'
 
 // Supprime un étudiant : suppression du compte auth.users, qui cascade sur
 // profiles -> students -> tasks/id_history/attendance_records (FK on delete cascade).
-exports.handler = async (event) => {
+export const handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return jsonResponse(405, { error: 'Méthode non autorisée' })
   }

@@ -1,8 +1,8 @@
-const { getAdminClient, requireAdmin, jsonResponse } = require('./_supabaseAdmin')
+import { getAdminClient, requireAdmin, jsonResponse } from './_supabaseAdmin.js'
 
 // Met à jour nom/email d'un étudiant. L'email étant aussi l'identifiant de
 // connexion Supabase Auth, il doit être synchronisé côté auth.users.
-exports.handler = async (event) => {
+export const handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return jsonResponse(405, { error: 'Méthode non autorisée' })
   }

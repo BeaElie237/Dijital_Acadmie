@@ -1,7 +1,7 @@
-const { getAdminClient, requireAdmin, jsonResponse } = require('./_supabaseAdmin')
-const { generateUniqueStudentCode } = require('./_idGenerator')
+import { getAdminClient, requireAdmin, jsonResponse } from './_supabaseAdmin.js'
+import { generateUniqueStudentCode } from './_idGenerator.js'
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return jsonResponse(405, { error: 'Méthode non autorisée' })
   }

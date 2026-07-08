@@ -9,7 +9,7 @@ function randomCode(length = 5) {
 }
 
 // Génère un identifiant ST+code aléatoire garanti unique dans la table students.
-async function generateUniqueStudentCode(supabaseAdmin) {
+export async function generateUniqueStudentCode(supabaseAdmin) {
   for (let attempt = 0; attempt < 20; attempt++) {
     const candidate = `ST${randomCode()}`
     const { data, error } = await supabaseAdmin
@@ -23,5 +23,3 @@ async function generateUniqueStudentCode(supabaseAdmin) {
   }
   throw new Error("Impossible de générer un identifiant unique, réessayez.")
 }
-
-module.exports = { generateUniqueStudentCode }

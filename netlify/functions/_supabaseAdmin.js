@@ -1,9 +1,9 @@
 // Client Supabase "admin" utilisant la clé service_role.
 // Ce fichier ne doit JAMAIS être importé côté frontend (dossier netlify/functions
 // uniquement, exécuté côté serveur par Netlify Functions).
-const { createClient } = require('@supabase/supabase-js')
+import { createClient } from '@supabase/supabase-js'
 
-function getAdminClient() {
+export function getAdminClient() {
   const url = process.env.SUPABASE_URL
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
 
@@ -18,7 +18,7 @@ function getAdminClient() {
 
 // Vérifie que le token Bearer envoyé par le client correspond à un admin.
 // Retourne { user } si ok, lève une erreur sinon.
-async function requireAdmin(event, adminClient) {
+export async function requireAdmin(event, adminClient) {
   const authHeader = event.headers.authorization || event.headers.Authorization
   const token = authHeader?.replace(/^Bearer\s+/i, '')
 
@@ -50,12 +50,10 @@ async function requireAdmin(event, adminClient) {
   return { user: userData.user }
 }
 
-function jsonResponse(statusCode, body) {
+export function jsonResponse(statusCode, body) {
   return {
     statusCode,
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
   }
 }
-
-module.exports = { getAdminClient, requireAdmin, jsonResponse }

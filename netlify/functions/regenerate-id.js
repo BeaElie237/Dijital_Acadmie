@@ -1,5 +1,5 @@
-const { getAdminClient, requireAdmin, jsonResponse } = require('./_supabaseAdmin')
-const { generateUniqueStudentCode } = require('./_idGenerator')
+import { getAdminClient, requireAdmin, jsonResponse } from './_supabaseAdmin.js'
+import { generateUniqueStudentCode } from './_idGenerator.js'
 
 // Régénère l'identifiant (ST + code aléatoire) d'UN étudiant précis.
 // - Toujours enregistré dans id_history.
@@ -7,7 +7,7 @@ const { generateUniqueStudentCode } = require('./_idGenerator')
 //   automatiquement remis au nouvel identifiant.
 // - S'il a déjà personnalisé son mot de passe, il faut passer resetPassword=true
 //   explicitement (confirmation demandée côté UI) pour aussi le réinitialiser.
-exports.handler = async (event) => {
+export const handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return jsonResponse(405, { error: 'Méthode non autorisée' })
   }
