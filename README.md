@@ -74,9 +74,23 @@ Chaque étudiant reçoit automatiquement ses 10 étapes de stage (les 9 étapes 
 4. Dans **Site settings > Environment variables**, ajouter :
    - `VITE_SUPABASE_URL`
    - `VITE_SUPABASE_ANON_KEY`
-   - `SUPABASE_URL`
+   - `SUPABASE_URL` (secret)
    - `SUPABASE_SERVICE_ROLE_KEY` (secret — utilisé uniquement côté Netlify Functions)
+   - `RESEND_API_KEY` (secret — voir section suivante)
 5. Déployer. Les fonctions serverless (`create-student`, `regenerate-id`, `update-student`, `delete-student`) gèrent les opérations nécessitant la clé `service_role` (création de comptes Auth, reset de mot de passe, suppression) sans jamais exposer cette clé au navigateur.
+
+⚠️ Ne cochez **jamais** "Mark as secret" pour `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` : ces deux variables doivent être intégrées telles quelles dans le code envoyé au navigateur, et Netlify bloquerait le déploiement en pensant à une fuite de secret.
+
+## 7. Email d'accès automatique (Resend)
+
+À chaque création d'étudiant depuis le dashboard admin, un email contenant son identifiant et son mot de passe par défaut lui est envoyé automatiquement via [Resend](https://resend.com).
+
+1. Créer un compte gratuit sur [resend.com](https://resend.com) (100 emails/jour, 3000/mois gratuits).
+2. Dashboard Resend → **API Keys** → créer une clé → copier la valeur (`re_...`).
+3. Ajouter `RESEND_API_KEY` dans les variables d'environnement Netlify (secret).
+4. Par défaut, les emails sont envoyés depuis `onboarding@resend.dev` (fonctionne immédiatement, sans configuration DNS, pratique pour démarrer). Pour utiliser votre propre domaine (ex: `no-reply@dijital.com`), vérifiez le domaine dans Resend puis ajoutez la variable `RESEND_FROM_EMAIL` (ex: `Dijital <no-reply@dijital.com>`).
+
+Si l'envoi échoue (clé manquante, domaine non vérifié...), la création de l'étudiant réussit quand même — le dashboard admin affiche un avertissement invitant à communiquer les accès manuellement.
 
 ## Architecture des identifiants et régénération
 

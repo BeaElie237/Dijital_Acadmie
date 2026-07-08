@@ -198,14 +198,16 @@ function CreateStudentModal({ onClose, onCreated }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [result, setResult] = useState(null)
+  const [emailStatus, setEmailStatus] = useState(null)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
     setLoading(true)
     try {
-      const { student } = await api.createStudent({ fullName, email })
+      const { student, emailSent, emailError } = await api.createStudent({ fullName, email })
       setResult(student)
+      setEmailStatus({ sent: emailSent, error: emailError })
     } catch (err) {
       setError(err.message)
     } finally {
@@ -224,6 +226,16 @@ function CreateStudentModal({ onClose, onCreated }) {
               <br />
               Mot de passe par défaut : <span className="font-mono">{result.student_code}</span>
             </p>
+            {emailStatus?.sent ? (
+              <p className="text-sm text-green-600">
+                ✔ Un email avec ses accès a été envoyé à {result.email}.
+              </p>
+            ) : (
+              <p className="text-sm text-amber-600">
+                ⚠ L'email n'a pas pu être envoyé{emailStatus?.error ? ` (${emailStatus.error})` : ''}.
+                Communique les accès manuellement.
+              </p>
+            )}
             <button className="btn-primary w-full" onClick={onCreated}>
               Terminer
             </button>

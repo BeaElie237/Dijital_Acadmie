@@ -1,5 +1,6 @@
 import { getAdminClient, requireAdmin, jsonResponse } from './_supabaseAdmin.js'
 import { generateUniqueStudentCode } from './_idGenerator.js'
+import { sendStudentCredentialsEmail } from './_email.js'
 
 export const handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -49,7 +50,25 @@ export const handler = async (event) => {
 
     if (studentError) throw studentError
 
-    return jsonResponse(200, { student })
+    // Envoi de l'email d'accès en best-effort : un échec d'envoi ne doit pas
+    // faire échouer la création du compte, déjà effectuée à ce stade.
+    let emailSent = false
+    let emailError = null
+    try {
+      const proto = event.headers['x-forwarded-proto'] || 'https'
+      const loginUrl = `${proto}://${event.headers.host}/login`
+      await sendStudentCredentialsEmail({
+        to: email,
+        fullName,
+        studentCode,
+        loginUrl
+      })
+      emailSent = true
+    } catch (err) {
+      emailError = err.message
+    }
+
+    return jsonResponse(200, { student, emailSent, emailError })
   } catch (err) {
     return jsonResponse(err.statusCode || 500, { error: err.message })
   }
