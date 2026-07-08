@@ -2,22 +2,31 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL
+
 export default function Login() {
   const { signIn } = useAuth()
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [errorDetails, setErrorDetails] = useState('')
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
+    setErrorDetails('')
     setLoading(true)
     const { error } = await signIn(email, password)
     setLoading(false)
     if (error) {
-      setError("Email ou mot de passe incorrect.")
+      // On affiche le message réel renvoyé par Supabase (pas un message générique) :
+      // "Invalid login credentials", "Email not confirmed", erreur réseau, etc.
+      // C'est ce qui permet de diagnostiquer directement depuis l'application,
+      // sans avoir besoin d'ouvrir la console ou de tester en ligne de commande.
+      setError(error.message || 'Erreur de connexion inconnue.')
+      setErrorDetails(`code: ${error.status ?? error.code ?? 'n/a'}`)
       return
     }
     navigate('/', { replace: true })
@@ -57,7 +66,12 @@ export default function Login() {
             />
           </div>
 
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && (
+            <div className="rounded-lg bg-red-50 border border-red-200 px-3 py-2">
+              <p className="text-sm text-red-600">{error}</p>
+              {errorDetails && <p className="text-xs text-red-400 mt-0.5">{errorDetails}</p>}
+            </div>
+          )}
 
           <button type="submit" disabled={loading} className="btn-primary w-full">
             {loading ? 'Connexion...' : 'Se connecter'}
@@ -66,6 +80,12 @@ export default function Login() {
 
         <p className="mt-6 text-center text-xs text-slate-400">
           Étudiant : votre identifiant (ex: ST001) est votre mot de passe par défaut.
+        </p>
+
+        {/* Repère de diagnostic : confirme quel projet Supabase ce déploiement utilise réellement.
+            Utile pour détecter un décalage de variables d'environnement entre Netlify et Supabase. */}
+        <p className="mt-4 text-center text-[11px] text-slate-300 break-all">
+          Connecté à : {SUPABASE_URL || '⚠️ VITE_SUPABASE_URL non défini'}
         </p>
       </div>
     </div>
