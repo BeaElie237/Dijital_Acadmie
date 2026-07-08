@@ -6,9 +6,8 @@ exports.handler = async (event) => {
     return jsonResponse(405, { error: 'Méthode non autorisée' })
   }
 
-  const supabaseAdmin = getAdminClient()
-
   try {
+    const supabaseAdmin = getAdminClient()
     await requireAdmin(event, supabaseAdmin)
 
     const { fullName, email } = JSON.parse(event.body || '{}')
