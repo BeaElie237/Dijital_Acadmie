@@ -30,7 +30,10 @@ export async function requireAdmin(event, adminClient) {
 
   const { data: userData, error: userError } = await adminClient.auth.getUser(token)
   if (userError || !userData?.user) {
-    const err = new Error('Session invalide')
+    // On remonte le message réel de Supabase (JWT expiré, signature invalide,
+    // mauvais projet...) plutôt qu'un texte générique, pour pouvoir diagnostiquer
+    // depuis l'application sans avoir à consulter les logs Netlify.
+    const err = new Error(`Session invalide${userError ? ` (${userError.message})` : ''}`)
     err.statusCode = 401
     throw err
   }
@@ -42,7 +45,9 @@ export async function requireAdmin(event, adminClient) {
     .single()
 
   if (profileError || profile?.role !== 'admin') {
-    const err = new Error('Accès réservé aux administrateurs')
+    const err = new Error(
+      `Accès réservé aux administrateurs${profileError ? ` (${profileError.message})` : ''}`
+    )
     err.statusCode = 403
     throw err
   }
