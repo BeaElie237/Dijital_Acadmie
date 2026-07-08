@@ -3,13 +3,13 @@ export const CONFIG = {
   SITE_NAME: 'Dijital',
   // URL de connexion à la plateforme de suivi des étudiants.
   // Reste une route relative tant que la plateforme vit dans le même déploiement ;
-  // remplacez par une URL absolue (https://app.dijital.com/login) si elle est déployée séparément.
+  // remplacez par une URL absolue (https://app.dijitalconsulting.com/login) si elle est déployée séparément.
   LOGIN_URL: '/login',
   // Numéro WhatsApp au format international, sans "+" ni espaces.
   // Ligne de la responsable du service communication.
   WHATSAPP_NUMBER: '237655599463',
   WHATSAPP_MESSAGE: "Bonjour Dijital, je souhaite en savoir plus sur vos services.",
-  CONTACT_EMAIL: 'contact@dijital.com',
+  CONTACT_EMAIL: 'contact@dijitalconsulting.com',
   CONTACT_PHONE: '+237 655 599 463',
   ADDRESS: 'Château Ngoa Ekele, Yaoundé, Cameroun',
   // Lien de partage Google Maps (bouton "Voir sur Google Maps").

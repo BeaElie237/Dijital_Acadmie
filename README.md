@@ -86,9 +86,10 @@ Chaque étudiant reçoit automatiquement ses 10 étapes de stage (les 9 étapes 
 À chaque création d'étudiant depuis le dashboard admin, un email contenant son identifiant et son mot de passe par défaut lui est envoyé automatiquement via [Resend](https://resend.com).
 
 1. Créer un compte gratuit sur [resend.com](https://resend.com) (100 emails/jour, 3000/mois gratuits).
-2. Dashboard Resend → **API Keys** → créer une clé → copier la valeur (`re_...`).
+2. Dashboard Resend → **API Keys** → créer une clé avec le scope **Sending access** (pas besoin de Full access) → copier la valeur (`re_...`).
 3. Ajouter `RESEND_API_KEY` dans les variables d'environnement Netlify (secret).
-4. Par défaut, les emails sont envoyés depuis `onboarding@resend.dev` (fonctionne immédiatement, sans configuration DNS, pratique pour démarrer). Pour utiliser votre propre domaine (ex: `no-reply@dijital.com`), vérifiez le domaine dans Resend puis ajoutez la variable `RESEND_FROM_EMAIL` (ex: `Dijital <no-reply@dijital.com>`).
+4. Domaine du projet : **dijitalconsulting.com**, à vérifier sur [resend.com/domains](https://resend.com/domains) (ajouter les enregistrements DNS SPF/DKIM indiqués par Resend chez le registrar du domaine). Une fois vérifié, ajouter la variable `RESEND_FROM_EMAIL=Dijital <no-reply@dijitalconsulting.com>` sur Netlify.
+5. Sans domaine vérifié, Resend refuse d'envoyer à d'autres destinataires que le propriétaire du compte (mode test) — `RESEND_FROM_EMAIL` doit être configuré avant d'envoyer aux étudiants.
 
 Si l'envoi échoue (clé manquante, domaine non vérifié...), la création de l'étudiant réussit quand même — le dashboard admin affiche un avertissement invitant à communiquer les accès manuellement.
 
